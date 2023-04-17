@@ -29,7 +29,7 @@ After cloning the project, you need to perform the following steps:
 
 4. Register for an account, and then set the "IsAdmin" column in the "users" table of your row to 1. Once you do that, you can deliver admin privileges from this account by going to Home Page -> Options -> Give admin privileges.
 
-After you set up the database connection, the connection string will be stored encrypted in the apps folder and automatically loaded. If you want to store it securely, open the source code and go to Cryptography -> ConfigManager, and set up your own Key and IV.
+After you set up the database connection, the connection string will be stored encrypted in the apps folder and automatically loaded. If you want to store it securely, open the source code and go to ```Cryptography -> ConfigManager```, and set up your own ```Key``` and ```IV```.
 
 Notes:
 

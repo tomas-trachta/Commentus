@@ -1,52 +1,41 @@
-
 # Commentus
 
-Create rooms for teams and assign tasks easily.
-
+Commentus is an application that allows you to create rooms for teams and assign tasks easily.
 
 ## Author
 
-[@Ponny159 (T. Trachta)](https://www.github.com/ponny159)
+This project was created by [@Ponny159 (T. Trachta)](https://www.github.com/ponny159).
 
+## Demo from admin's perspective
 
-## Demo from admins perspective
+![Commentus admin showcase](https://github.com/Ponny159/Commentus/blob/main/Commentus/Resources/commentus_admin_showcase.gif)
 
-![](https://github.com/Ponny159/Commentus/blob/main/Commentus/Resources/commentus_admin_showcase.gif)
+## Getting started
 
-
-## Run Locally
-
-Clone the project
+To get started with Commentus, you can clone the project with the following command:
 
 ```bash
-  git clone https://github.com/ponny159/commentus
+git clone https://github.com/ponny159/commentus
 ```
 
-Publish it locally with key and install that key.  
-Then install the package.  
+After cloning the project, publish it locally with a key and install that key. Then, install the package and set up a MySql database.
 
-Set up MySql database.  
+To run the application, click on the options and select "Set up database." Connect to your MySql database, and Commentus will set up tables for you.
 
-Run the application, click on options and select 'Set up database'.  
-Connect to your MySql database.  
-Commentus will set up tables for you.  
-Register. Now you need to set 'IsAdmin' column in 'users' table of your row to 1.  
-Once you do that, you can deliver admin privileges from this account using:  
-``` Home Page -> Options -> Give admin privileges ```  
+Register for an account, and then set the "IsAdmin" column in the "users" table of your row to 1. Once you do that, you can deliver admin privileges from this account by going to Home Page -> Options -> Give admin privileges.
 
-Once you set up database connection, the connection string will be stored encrypted in apps folder and automatically loaded.  
-If you want to store it securely, open source code and go to  
-``` Cryptography -> ConfigManager ``` and set up your own ``` Key ``` and ``` IV ```  
+After you set up the database connection, the connection string will be stored encrypted in the apps folder and automatically loaded. If you want to store it securely, open the source code and go to Cryptography -> ConfigManager, and set up your own Key and IV.
 
-*notes: you can enter images into chat, but because there is no viable multiplatform way to paste images from clipboard, paste the absolute path/URL instead. Supported formats are png and jpeg.  
-You can style content of task with HTML and CSS.
+Notes:
+- You can enter images into chat, but because there is no viable multiplatform way to paste images from clipboard, paste the absolute path/URL instead. Supported formats are png and jpeg.
+- You can style the content of tasks with HTML and CSS.
+
 ## Technologies
 
 **RDBMS:** MySql
 
-**Application:** .NET 6.0, .NET MAUI  
+**Application:** .NET 6.0, .NET MAUI
 
 **Dependencies:** Community toolkit MVVM, Microsoft SqlClient, MySql.Data, SkiaSharp
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://raw.githubusercontent.com/Ponny159/commentus/main/license.txt)
-

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Commentus.MVVM.Views.GiveAdminPrivilegesPage"
+             Title="Give admin privileges">
+    <VerticalStackLayout 
+        Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+        <CollectionView x:Name="UsersCollectionView" HorizontalOptions="Fill" 
+                        SelectionMode="Single" SelectionChanged="UsersCollectionView_SelectionChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout WidthRequest="350">
+                        <Label Text="{Binding}" HorizontalOptions="Center"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Entry Placeholder="Filter List" x:Name="NameEntry" TextChanged="NameEntry_TextChanged"/>
+        <Button Text="Submit" Command="{Binding GiveAdminPrivilegesCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>

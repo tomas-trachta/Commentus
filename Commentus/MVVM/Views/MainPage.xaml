@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Commentus"
+             xmlns:viewModel="clr-namespace:Commentus.MVVM.ViewModels"
+             x:Class="Commentus.MainPage"
+             x:Name="this">
+
+    <ContentPage.MenuBarItems>
+        <MenuBarItem x:Name="MenuBar" Text="Options" BindingContext="{Binding Path=BindingContext, Source={x:Reference this}}">
+            <MenuFlyoutItem Text="Set up database" Command="{Binding Source={x:Static viewModel:MainViewModel.Instance},Path=OpenSetUpDbPageCommand}"/>
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+    
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+
+            <Grid WidthRequest="350" HorizontalOptions="Fill" RowSpacing="25" x:Name="loginGrid" IsVisible="true">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label Text="Login" Grid.Row="0" HorizontalOptions="Center" FontAttributes="Bold"/>
+                <Label Text="Enter your credentials" Grid.Row="1" HorizontalOptions="Center"/>
+                <Entry Placeholder="Your name" Text="{Binding Source={x:Static viewModel:MainViewModel.Instance},Path=Name}" Grid.Row="2"/>
+                <Entry IsPassword="True" Placeholder="Password" Text="{Binding Source={x:Static viewModel:MainViewModel.Instance}, Path=Password}" Grid.Row="3"/>
+                <Button Text="Submit" Grid.Row="4" Command="{Binding Source={x:Static viewModel:MainViewModel.Instance},Path=LogInCommand}"/>
+                <Button Grid.Row="5" Text="Register form" Clicked="Register_Tapped" Scale="0.95"/>
+            </Grid>
+
+            <Grid WidthRequest="350" HorizontalOptions="Fill" RowSpacing="25" x:Name="registerGrid" IsVisible="false">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label Text="Register" Grid.Row="0" HorizontalOptions="Center" FontAttributes="Bold"/>
+                <Label Text="Enter your credentials" Grid.Row="1" HorizontalOptions="Center"/>
+                <Entry Placeholder="Your name" Grid.Row="2" Text="{Binding Source={x:Static viewModel:MainViewModel.Instance},Path=Name, Mode=TwoWay}"/>
+                <Entry IsPassword="True" Placeholder="Password" Grid.Row="3" Text="{Binding Source={x:Static viewModel:MainViewModel.Instance},Path=Password, Mode=TwoWay}"/>
+                <Button Text="Submit" Grid.Row="4" Command="{Binding Source={x:Static viewModel:MainViewModel.Instance},Path=RegisterCommand}"/>
+                <Button Grid.Row="5" Text="Login form" Clicked="LogIn_Tapped" Scale="0.95"/>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

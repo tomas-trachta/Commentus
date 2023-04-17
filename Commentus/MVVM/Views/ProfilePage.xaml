@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:Commentus.MVVM.ViewModels"
+             x:Class="Commentus.MVVM.Views.ProfilePage"
+             Title="Profile">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False"/>
+    </Shell.BackButtonBehavior>
+    
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+
+        <Grid x:Name="profileGrid" RowSpacing="25" IsVisible="true" HorizontalOptions="Fill" WidthRequest="350">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Button Text="Pick profile image" Clicked="PickProfileImage" Grid.Row="0"/>
+            <Image x:Name="profileImage"
+                       Source="{Binding Source={x:Static viewModel:MainViewModel.Instance}, Path=ProfileImage}"
+                       WidthRequest="100" HeightRequest="100" Margin="0" Grid.Row="1"/>
+            <Label Text="{Binding Source={x:Static viewModel:MainViewModel.Instance},Path=Name, Mode=OneWay,StringFormat='Username: {0}'}" Grid.Row="2"/>
+            <Label Text="{Binding Source={x:Static viewModel:MainViewModel.Instance},Path=IsAdmin, StringFormat='Is admin: {0}', Mode=OneWay}" Grid.Row="3"/>
+            <Label Text="Member of: " Grid.Row="4"/>
+            <ListView ItemsSource="{Binding Source={x:Static viewModel:MainViewModel.Instance},Path=RoomsNames, Mode=OneWay}" Grid.Row="5"/>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

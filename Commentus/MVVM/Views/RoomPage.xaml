@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:Commentus.MVVM.ViewModels"
+             x:Class="Commentus.MVVM.Views.RoomPage">
+
+    <HorizontalStackLayout x:Name="MainHStackLayout">
+        <VerticalStackLayout>
+            <Entry x:Name="RenameEntry" Placeholder="Enter new name and press enter" IsVisible="false" Text="{Binding ChangedName}" Completed="ExecuteRenamePageCommand"/>
+            <Label Text="Members" FontSize="Header" FontFamily="Impact" 
+                   HorizontalOptions="Start" Margin="5,0,0,0" x:Name="LabelMembers"/>
+            <CollectionView x:Name="MembersListView"
+                                Background="transparent"
+                                HorizontalOptions="Fill"
+                                VerticalScrollBarVisibility="Default"
+                                ItemsSource="{Binding Members}" 
+                                SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout>
+                            <Image Source="{Binding Item1}" WidthRequest="50" HeightRequest="50" Margin="5,10,0,0"/>
+                            <Label Text="{Binding Item2}" Margin="5,10,0,0"/>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button Text="Add user" IsVisible="{Binding Source={x:Static viewModel:MainViewModel.Instance},
+                    Path=IsAdmin}" x:Name="AddUserButton" Command="{Binding OpenAddUserPageCommand}"/>
+            <Button Text="Remove user" IsVisible="{Binding Source={x:Static viewModel:MainViewModel.Instance},
+                    Path=IsAdmin}"
+                    x:Name="RemoveUserButton" Clicked="RemoveUserButton_Clicked"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout x:Name="VStackLayout">
+            <Image x:Name="previewImage" Source="{Binding PreviewImageSource}" IsVisible="false" Margin="0"/>
+            <Frame CornerRadius="5" BorderColor="Transparent" Padding="0">
+                <CollectionView 
+                            x:Name="MessagesListView"
+                            ItemsSource="{Binding Messages}"
+                            Background="#fafafa" 
+                            SelectionMode="None"
+                            HorizontalOptions="Fill"
+                            VerticalScrollBarVisibility="Default">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="20" x:Name="SView" x:Uid="SLayout">
+                                <Label Text="{Binding Name,StringFormat='{0}:'}" FontAttributes="Bold" TextColor="#ba1452"
+                                                VerticalOptions="Center" HorizontalOptions="Start"/>
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Start">
+                                    <Label x:Name="LabelMessage" Text="{Binding Content}" Margin="20,0,0,0" TextColor="#111111"
+                                                VerticalOptions="Center" 
+                                                HorizontalOptions="Start" LineBreakMode="WordWrap" IsVisible="{Binding IsText}">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ChatMessage_Tapped"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <Image 
+                                    Source="{Binding Content}" Margin="20,0,0,0"
+                                    VerticalOptions="Center" HorizontalOptions="Start"
+                                    IsVisible="{Binding IsImage}">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ChatImage_Tapped"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Frame>
+            <HorizontalStackLayout x:Name="HStackLayout" Padding="0" HorizontalOptions="Fill">
+                <Entry x:Name="ChatEntry" Text="{Binding ChatEntry}" Margin="0" 
+                       Completed="ChatEntry_Completed" Keyboard="Chat" TextChanged="ChatEntry_TextChanged"/>
+                <Button x:Name="ChatSend" Text="Send" Padding="0" Margin="0"
+                        Clicked="ChatEntry_Completed"/>
+                <Button x:Name="ScrollDown" Text="Scroll down" Padding="0" Margin="0" Clicked="ScrollDown_Clicked"/>
+            </HorizontalStackLayout>
+            <VerticalStackLayout x:Name="TaskStackLayout" IsVisible="false">
+                <Entry Placeholder="Task title" x:Name="taskTitleEntry" Text="{Binding TaskTitle,Mode=TwoWay}"/>
+                <WebView x:Name="htmltext"/>
+                <HorizontalStackLayout x:Name="duedateStackLayout" HorizontalOptions="Center">
+                    <Label Text="Select due date: " Margin="0,0,20,0" VerticalOptions="Center"/>
+                    <DatePicker x:Name="dueDatePicker" Margin="0,0,20,0" Date="{Binding DueDate, Mode=TwoWay}"/>
+                    <Label Text="Select solvers" Margin="0,0,20,0" VerticalOptions="Center"/>
+                    <CollectionView x:Name="solversCollectionView" ItemsSource="{Binding Members}" 
+                                    SelectionMode="Multiple" Margin="0,0,20,0" 
+                                    SelectionChanged="CollectionView_SelectionChanged">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Item2}" Padding="20,0,20,0"/>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </HorizontalStackLayout>
+                <Editor x:Name="htmlEditor" TextChanged="htmlEditor_TextChanged" IsTextPredictionEnabled="True" 
+                        Text="{Binding TaskText, Mode=TwoWay}"/>
+                <HorizontalStackLayout>
+                    <Button Text="Submit" x:Name="submitHtmlButton" Command="{Binding AddTaskToRoomCommand}"/>
+                    <Button Text="Update" x:Name="updateHtmlButton" Command="{Binding UpdateTaskCommand}"/>
+                    <Button Text="Back" x:Name="backButton" Clicked="BackButton_Clicked"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <CollectionView x:Name="TasksCollectionView"
+                                    Background="transparent"    
+                                    VerticalScrollBarVisibility="Default"
+                                    ItemsSource="{Binding Tasks}"
+                                    SelectionMode="Single"
+                                    SelectionChanged="TasksCollectionView_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Name}" Margin="20,20,0,0" FontAttributes="Bold"/>
+                            <HorizontalStackLayout>
+                                <Label Text="Due:" Margin="20,20,0,0"/>
+                                <Label Text="{Binding DueDatetime}" Margin="20,20,0,0" TextColor="CornflowerBlue" FontAttributes="Bold"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Margin="20,20,0,0">
+                                <Label Text="Solvers: " TextColor="DarkMagenta"/>
+                                <CollectionView ItemSizingStrategy="MeasureAllItems" ItemsSource="{Binding Solvers}" VerticalScrollBarVisibility="Default" Margin="20,0,0,0">
+                                </CollectionView>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button x:Name="AddTaskButton" Text="Add task" IsVisible="{Binding Source={x:Static viewModel:MainViewModel.Instance},Path=IsAdmin}" Clicked="AddTaskButton_Clicked"/>
+            <Button x:Name="DeleteTaskButton" Text="Delete task" IsVisible="{Binding Source={x:Static viewModel:MainViewModel.Instance},Path=IsAdmin}" Clicked="DeleteTaskButton_Clicked"/>
+        </VerticalStackLayout>
+    </HorizontalStackLayout>
+</ContentPage>

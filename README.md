@@ -14,7 +14,7 @@ This project was created by [@Ponny159 (T. Trachta)](https://www.github.com/ponn
 
 To get started with Commentus, you can clone the project with the following command:
 
-```bash
+```
 git clone https://github.com/ponny159/commentus
 ```
 

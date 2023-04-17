@@ -11,7 +11,7 @@ Create rooms for teams and assign tasks easily.
 
 ## Demo from admins perspective
 
-![](https://github.com/ponny159/Commentus/main/commentus_admin_showcase.gif)
+![](https://github.com/Ponny159/Commentus/blob/main/commentus_admin_showcase.gif)
 
 
 ## Run Locally

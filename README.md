@@ -18,17 +18,25 @@ To get started with Commentus, you can clone the project with the following comm
 git clone https://github.com/ponny159/commentus
 ```
 
-After cloning the project, publish it locally with a key and install that key. Then, install the package and set up a MySql database.
 
-To run the application, click on the options and select "Set up database." Connect to your MySql database, and Commentus will set up tables for you.
+After cloning the project, you need to perform the following steps:
 
-Register for an account, and then set the "IsAdmin" column in the "users" table of your row to 1. Once you do that, you can deliver admin privileges from this account by going to Home Page -> Options -> Give admin privileges.
+1. Publish the project locally with a key and install that key.
+
+2. Install the package and set up a MySql database.
+
+3. Click on the options and select "Set up database" to run the application. Connect to your MySql database, and Commentus will set up tables for you.
+
+4. Register for an account, and then set the "IsAdmin" column in the "users" table of your row to 1. Once you do that, you can deliver admin privileges from this account by going to Home Page -> Options -> Give admin privileges.
 
 After you set up the database connection, the connection string will be stored encrypted in the apps folder and automatically loaded. If you want to store it securely, open the source code and go to Cryptography -> ConfigManager, and set up your own Key and IV.
 
 Notes:
+
 - You can enter images into chat, but because there is no viable multiplatform way to paste images from clipboard, paste the absolute path/URL instead. Supported formats are png and jpeg.
+
 - You can style the content of tasks with HTML and CSS.
+
 
 ## Technologies
 

@@ -38,7 +38,8 @@ Once you set up database connection, the connection string will be stored encryp
 If you want to store it securely, open source code and go to  
 ``` Cryptography -> ConfigManager ``` and set up your own ``` Key ``` and ``` IV ```  
 
-*note: you can enter images into chat, but because there is no viable multiplatform way to paste images from clipboard, paste the absolute path/URL instead. Supported formats are png and jpeg.  
+*notes: you can enter images into chat, but because there is no viable multiplatform way to paste images from clipboard, paste the absolute path/URL instead. Supported formats are png and jpeg.  
+You can style content of task with HTML and CSS.
 ## Technologies
 
 **RDBMS:** MySql

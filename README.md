@@ -46,4 +46,4 @@ Notes:
 
 **Dependencies:** Community toolkit MVVM, Microsoft SqlClient, MySql.Data, SkiaSharp
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://raw.githubusercontent.com/Ponny159/commentus/main/license.txt)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/Ponny159/Commentus/blob/main/LICENSE.txt)

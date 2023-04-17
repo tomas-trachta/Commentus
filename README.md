@@ -36,7 +36,9 @@ Once you do that, you can deliver admin privileges from this account using:
 
 Once you set up database connection, the connection string will be stored encrypted in apps folder and automatically loaded.  
 If you want to store it securely, open source code and go to  
-``` Cryptography -> ConfigManager ``` and set up your own ``` Key ``` and ``` IV ```
+``` Cryptography -> ConfigManager ``` and set up your own ``` Key ``` and ``` IV ```  
+
+*note: you can enter images into chat, but because there is no viable multiplatform way to paste images from clipboard, paste the absolute path/URL instead. Supported formats are png and jpeg.  
 ## Technologies
 
 **RDBMS:** MySql

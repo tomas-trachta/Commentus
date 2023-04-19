@@ -25,7 +25,7 @@ After cloning the project, you need to perform the following steps:
 
 2. Install the package and set up a MySql database.
 
-3. Click on the options and select "Set up database" to run the application. Connect to your MySql database, and Commentus will set up tables for you.
+3. Start application. Click on the options and select "Set up database". Connect to your MySql database, and Commentus will set up tables for you.
 
 4. Register for an account, and then set the "IsAdmin" column in the "users" table of your row to 1. Once you do that, you can deliver admin privileges from this account by going to Home Page -> Options -> Give admin privileges.
 

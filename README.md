@@ -4,11 +4,11 @@ Commentus is an application that allows you to create rooms for teams and assign
 
 ## Author
 
-This project was created by [@Ponny159 (T. Trachta)](https://www.github.com/ponny159).
+This project was created by [Tomas Trachta](https://www.github.com/tomas-trachta).
 
 ## Demo from admin's perspective
 
-![Commentus admin showcase](https://github.com/Ponny159/Commentus/blob/main/Commentus/Resources/commentus_admin_showcase.gif)
+![Commentus admin showcase](https://github.com/tomas-trachta/Commentus/blob/main/Commentus/Resources/commentus_admin_showcase.gif)
 
 ## Getting started
 
